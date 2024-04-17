@@ -10,7 +10,7 @@ def check_arguments():
         sys.exit(1)
 
 # Check if the input file exists
-    if not os.path.exists(sys.argv[1]):
+    if not os.path.isfile(sys.argv[1]):
         print(f"Missing {sys.argv[1]}", file=sys.stderr)
         sys.exit(1)
 
