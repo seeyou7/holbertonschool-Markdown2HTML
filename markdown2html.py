@@ -9,6 +9,21 @@ Write a script markdown2html.py that takes two string arguments:
 import sys
 import os
 
+
+def parse_heading(line):
+    """Parse and convert Markdown headings to HTML."""
+    # Strip the leading spaces and count the number of '#' characters
+    stripped_line = line.lstrip()
+    heading_num = len(stripped_line) - len(stripped_line.lstrip('#'))
+
+    # Check if the line is a valid Markdown heading
+    if 1 <= heading_num <= 6:
+        # Remove '#' characters and any leading/trailing spaces from the text
+        content = stripped_line[heading_num:].strip()
+        return f"<h{heading_num}>{content}</h{heading_num}>\n"
+    return line
+
+
 def check_arg():
     """ Check if the number of arguments is correct"""
     if len(sys.argv) < 3:
