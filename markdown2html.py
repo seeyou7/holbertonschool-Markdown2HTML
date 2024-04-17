@@ -12,7 +12,7 @@ def check_arg():
     if not os.path.isfile(sys.argv[1]):
         print(f"Missing {sys.argv[1]}", file=sys.stderr)
         sys.exit(1)
-    sys.exit(0)
+
 
 
 
@@ -20,4 +20,5 @@ def check_arg():
 
 if __name__ == '__main__':
     check_arg()
+    sys.exit(0)
 
