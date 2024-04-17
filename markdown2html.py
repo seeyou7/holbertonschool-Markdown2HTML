@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """
-Write a script markdown2html.py that takes two string arguments:
-
-    First argument is the name of the Markdown file
-    Second argument is the output file name
+This script, markdown2html.py, takes two string arguments:
+- The first argument is the name of the Markdown file.
+- The second argument is the output file name.
+It converts Markdown headings in the file to HTML heading tags.
 """
 
 import sys
@@ -11,8 +11,17 @@ import os
 
 
 def parse_heading(line):
-    """Parse and convert Markdown headings to HTML."""
-    # Strip the leading spaces and count the number of '#' characters
+    """Parse and convert Markdown headings to HTML.
+
+    Args:
+        line (str): A string from the Markdown file.
+
+    Returns:
+        str: A string formatted as an HTML heading if the line is a
+        Markdown heading,
+        otherwise returns the line unchanged.
+    """
+    # Remove leading spaces and count the number of '#' characters
     stripped_line = line.lstrip()
     heading_num = len(stripped_line) - len(stripped_line.lstrip('#'))
 
@@ -24,10 +33,12 @@ def parse_heading(line):
     return line
 
 
-def check_arg():
-    """ Check if the number of arguments is correct"""
+def check_arguments():
+    """Check if the number of command-line arguments is
+    correct and files exist."""
     if len(sys.argv) < 3:
-        print("Usage: ./markdown2html.py README.md README.html", file=sys.stderr)
+        print("Usage: ./markdown2html.py README.md README.html",
+              file=sys.stderr)
         sys.exit(1)
 
     if not os.path.isfile(sys.argv[1]):
@@ -35,11 +46,6 @@ def check_arg():
         sys.exit(1)
 
 
-
-
-
-
 if __name__ == '__main__':
-    check_arg()
+    check_arguments()
     sys.exit(0)
-
