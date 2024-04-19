@@ -44,8 +44,16 @@ def check_arguments():
     if not os.path.isfile(sys.argv[1]):
         print(f"Missing {sys.argv[1]}", file=sys.stderr)
         sys.exit(1)
+def convert_markdown_to_html(markdown_file, html_file):
+    ''' Convert Markdown file to HTML '''
+    with open(markdown_file) as md, open(html_file, 'w') as html:
+        for line in md:
+            line = parse_heading(line)
+
 
 
 if __name__ == '__main__':
     check_arguments()
+    convert_markdown_to_html(sys.argv[1], sys.argv[2])
     sys.exit(0)
+
