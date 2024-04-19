@@ -1,4 +1,4 @@
-markdown2html
+markdown TO html
 # My title
 ## My title2
 # My title3
